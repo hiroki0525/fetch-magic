@@ -1,6 +1,6 @@
 {
   "name": "fetch-magic",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "This is magic🥳",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
