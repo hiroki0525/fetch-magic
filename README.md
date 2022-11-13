@@ -29,13 +29,23 @@ yarn add fetch-magic
 
 ### initialize
 
-Please set your api base url.
-
 ```js
 import fetchMagic from 'fetch-magic';
 
-const client = fetchMagic({ baseUrl: 'https://yourdomain/api' });
+const client = fetchMagic({ baseUrl: 'https://yourdomain/api', defaultDecodeType: 'json' });
 ```
+
+You can use constructor parameters as below.
+
+#### baseUrl: string
+
+Please set your api base url.
+
+#### defaultDecodeType?: SupportDecodeType
+
+If you use `defaultDecodeType`, fetch response automatically is decoded like json.
+
+`SupportDecodeType` is `'json' | 'text' | 'arrayBuffer'` .
 
 ### HTTP request methods
 
@@ -122,17 +132,22 @@ client.getUsers_userId({ userId: '1234', hoge: 'fuga' });
 
 ### fetch options
 
-Please set second argument with [fetch options](https://developer.mozilla.org/en-US/docs/Web/API/fetch#parameters) except for `method` .
+Please set second argument with [fetch options](https://developer.mozilla.org/en-US/docs/Web/API/fetch#parameters) except for `method` and you can also set parameters like below. 
+
+#### decodeType?: SupportDecodeType
+
+Please see [defaultDecodeType](#defaultDecodeType-SupportDecodeType) .
 
 ```js
 const client = fetchMagic({ baseUrl: 'https://yourdomain/api' });
 
 // with fetch options
-client.getUsers({ page: 1 }, {
+const json = await client.getUsers({ page: 1 }, {
+  decodeType: 'json',
   mode: 'no-cors',
   headers: {
     'Content-Type': 'application/json',
-  }
+  },
 });
 ```
 
