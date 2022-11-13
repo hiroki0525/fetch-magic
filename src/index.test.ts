@@ -1,4 +1,7 @@
-import { enableFetchMocks } from 'jest-fetch-mock';
+import fetchMock, { enableFetchMocks } from 'jest-fetch-mock';
+
+jest.setMock('cross-fetch', fetchMock);
+
 import fetchMagic, { FetchMagicMethodOptions } from './index';
 
 enableFetchMocks();
@@ -516,6 +519,117 @@ describe('fetchMagic', () => {
     describe('fetch is success', () => {
       it('return Response', async () => {
         await expect(client.get()).resolves.toBeInstanceOf(Response);
+      });
+    });
+
+    describe('with decodeType', () => {
+      beforeAll(() => {
+        (fetch as any).resetMocks();
+      });
+
+      describe('client has decodeType property', () => {
+        const clientWithDecodeType: ReturnType<typeof fetchMagic> = fetchMagic({
+          baseUrl,
+          defaultDecodeType: 'text',
+        });
+
+        describe('and no fetch decodeType option', () => {
+          beforeAll(() => {
+            (fetch as any).mockResponseOnce('text');
+          });
+
+          it('return String', async () => {
+            await expect(clientWithDecodeType.get()).resolves.toBe('text');
+          });
+        });
+
+        describe('and fetch decodeType option', () => {
+          beforeAll(() => {
+            (fetch as any).mockResponseOnce(new ArrayBuffer(20));
+          });
+
+          it('return ArrayBuffer', async () => {
+            await expect(
+              clientWithDecodeType.get({}, { decodeType: 'arrayBuffer' })
+            ).resolves.toBeInstanceOf(ArrayBuffer);
+          });
+        });
+      });
+
+      describe('client has no decodeType property', () => {
+        describe('and no fetch decodeType option', () => {
+          beforeAll(() => {
+            (fetch as any).mockResponseOnce('text');
+          });
+
+          it('return Response', async () => {
+            await expect(client.get()).resolves.toBeInstanceOf(Response);
+          });
+        });
+
+        describe('and fetch decodeType option', () => {
+          beforeAll(() => {
+            (fetch as any).mockResponseOnce(new ArrayBuffer(20));
+          });
+
+          it('return ArrayBuffer', async () => {
+            await expect(
+              client.get({}, { decodeType: 'arrayBuffer' })
+            ).resolves.toBeInstanceOf(ArrayBuffer);
+          });
+        });
+      });
+
+      describe('decodeType is', () => {
+        describe('nothing', () => {
+          beforeAll(() => {
+            (fetch as any).mockResponseOnce('text');
+          });
+
+          it('return Response', async () => {
+            await expect(client.get()).resolves.toBeInstanceOf(Response);
+          });
+        });
+
+        describe('text', () => {
+          beforeAll(() => {
+            (fetch as any).mockResponseOnce('text');
+          });
+
+          it('return string', async () => {
+            await expect(client.get({}, { decodeType: 'text' })).resolves.toBe(
+              'text'
+            );
+          });
+        });
+
+        describe('json', () => {
+          const expected = { json: 'json' };
+
+          beforeAll(() => {
+            (fetch as any).mockResponseOnce(JSON.stringify(expected));
+          });
+
+          it('return json', async () => {
+            await expect(
+              client.get({}, { decodeType: 'json' })
+            ).resolves.toStrictEqual(expected);
+          });
+        });
+
+        describe('arrayBuffer', () => {
+          const expected = new ArrayBuffer(1);
+
+          beforeAll(() => {
+            (fetch as any).mockResponseOnce(expected);
+          });
+
+          it('return ArrayBuffer', async () => {
+            await expect(
+              client.get({}, { decodeType: 'arrayBuffer' })
+            ).resolves.toStrictEqual(expected);
+          });
+        });
       });
     });
 

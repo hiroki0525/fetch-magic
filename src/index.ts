@@ -1,14 +1,23 @@
 import urlcat, { ParamMap } from 'urlcat';
+import fetch from 'cross-fetch';
+
+export type SupportDecodeType = keyof Pick<
+  Body,
+  'json' | 'text' | 'arrayBuffer'
+>;
 
 export interface FetchNoMagicConstructorParams {
   readonly baseUrl: string;
+  readonly defaultDecodeType?: SupportDecodeType;
 }
 
 class FetchNoMagicClient {
   readonly baseUrl: string;
+  readonly defaultDecodeType?: SupportDecodeType;
 
-  constructor({ baseUrl }: FetchNoMagicConstructorParams) {
+  constructor({ baseUrl, defaultDecodeType }: FetchNoMagicConstructorParams) {
     this.baseUrl = baseUrl;
+    this.defaultDecodeType = defaultDecodeType;
   }
 }
 
@@ -32,11 +41,13 @@ const httpMethodPrefixList: readonly SupportHttpMethods[] = [
 ];
 
 export type FetchMagicMethodParams = ParamMap;
-export type FetchMagicMethodOptions = Omit<RequestInit, 'method'>;
+export type FetchMagicMethodOptions = Omit<RequestInit, 'method'> & {
+  readonly decodeType?: SupportDecodeType;
+};
 export type FetchMagicMethod = (
   params?: FetchMagicMethodParams,
   options?: FetchMagicMethodOptions
-) => Promise<Response>;
+) => Promise<Response | ArrayBuffer | any | string>;
 
 const proxyHandler: ProxyHandler<FetchMagicClientProps> = {
   get(target, prop): FetchMagicMethod {
@@ -59,11 +70,18 @@ const proxyHandler: ProxyHandler<FetchMagicClientProps> = {
           );
         }
         const pathTemplate = parsePathTemplateFromObjectPropName(prop);
+        const decodeType = options?.decodeType || target.defaultDecodeType;
         fetch(urlcat(target.baseUrl, pathTemplate, params), {
           ...options,
           method: httpMethodType.toUpperCase(),
         })
-          .then(resolve)
+          .then(async res => {
+            if (decodeType) {
+              resolve(await res[decodeType]());
+            } else {
+              resolve(res);
+            }
+          })
           .catch(reject);
       });
   },
