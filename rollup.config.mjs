@@ -15,6 +15,8 @@ export default {
       compact: true,
     },
   ],
-  external: Object.keys(packageJson.dependencies),
+  external: [
+    'cross-fetch',
+  ],
   plugins: [commonjs(), typescript(), nodeResolve(), terser()],
 };
