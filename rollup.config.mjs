@@ -15,5 +15,6 @@ export default {
       compact: true,
     },
   ],
+  external: Object.keys(packageJson.dependencies),
   plugins: [commonjs(), typescript(), nodeResolve(), terser()],
 };
