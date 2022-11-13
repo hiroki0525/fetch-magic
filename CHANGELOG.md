@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/hiroki0525/fetch-magic/compare/v1.1.0...v1.1.1) (2022-11-13)
+
+
+### Bug Fixes
+
+* remove  urlcat from rollup external ([8e9cbd5](https://github.com/hiroki0525/fetch-magic/commit/8e9cbd5ebe0dd0ecdfc5c624f2854206ea2c0b1a))
+
 # [1.1.0](https://github.com/hiroki0525/fetch-magic/compare/v1.0.0...v1.1.0) (2022-11-13)
 
 
