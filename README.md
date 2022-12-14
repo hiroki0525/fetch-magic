@@ -155,6 +155,10 @@ const json = await client.getUsers({ page: 1 }, {
 
 `fetch-magic` builds request url using [urlcat](https://github.com/balazsbotond/urlcat).
 
+## Contributing
+
+Please see [CONTRIBUTING.md](https://github.com/hiroki0525/fetch-magic/blob/main/CONTRIBUTING.md) .
+
 ## License
 
 Released under the MIT license.
