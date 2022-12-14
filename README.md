@@ -153,7 +153,9 @@ const json = await client.getUsers({ page: 1 }, {
 
 ## Dependencies
 
-`fetch-magic` builds request url using [urlcat](https://github.com/balazsbotond/urlcat).
+- [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)
+- [cross-fetch](https://github.com/lquixada/cross-fetch)
+- [urlcat](https://github.com/balazsbotond/urlcat)
 
 ## Contributing
 
