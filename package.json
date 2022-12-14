@@ -9,7 +9,8 @@
   ],
   "scripts": {
     "test": "run-p test:*",
-    "test:jest": "jest",
+    "test:server": "jest",
+    "test:browser": "jest --env=jsdom",
     "test:lint": "eslint src/",
     "test:prettier": "prettier src/",
     "build": "rollup -c",
@@ -50,6 +51,7 @@
     "eslint-plugin-unused-imports": "2.0.0",
     "husky": "8.0.2",
     "jest": "29.3.1",
+    "jest-environment-jsdom": "^29.3.1",
     "jest-fetch-mock": "^3.0.3",
     "npm-run-all": "^4.1.5",
     "prettier": "2.8.0",
