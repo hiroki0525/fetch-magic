@@ -1,3 +1,25 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [fetch-magic](#fetch-magic)
+  - [Set up](#set-up)
+  - [Usage](#usage)
+    - [initialize](#initialize)
+      - [baseUrl: string](#baseurl-string)
+      - [defaultDecodeType?: SupportDecodeType](#defaultdecodetype-supportdecodetype)
+    - [HTTP request methods](#http-request-methods)
+    - [no path parameter](#no-path-parameter)
+    - [path parameter](#path-parameter)
+    - [query parameter](#query-parameter)
+    - [fetch options](#fetch-options)
+      - [decodeType?: SupportDecodeType](#decodetype-supportdecodetype)
+  - [Dependencies](#dependencies)
+  - [Contributing](#contributing)
+  - [License](#license)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # fetch-magic
 
 This is magic🥳
