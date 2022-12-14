@@ -1,3 +1,10 @@
+# fetch-magic
+
+![fetch-magic](https://user-images.githubusercontent.com/40714517/207600070-2d1872c5-8cf5-4407-a1e9-80abd54a6701.png)
+
+[![npm version](https://badge.fury.io/js/fetch-magic.svg)](https://badge.fury.io/js/fetch-magic)
+[![Test](https://github.com/hiroki0525/fetch-magic/actions/workflows/test.yml/badge.svg)](https://github.com/hiroki0525/fetch-magic/actions/workflows/test.yml)
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**
@@ -22,7 +29,7 @@
 
 # fetch-magic
 
-This is magic🥳
+This is magic 🧙‍️🧙‍️ .
 
 You don't need to fetch with request url.
 
