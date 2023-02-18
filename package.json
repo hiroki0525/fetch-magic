@@ -1,7 +1,7 @@
 {
   "name": "fetch-magic",
   "version": "1.1.1",
-  "description": "This is magic \uD83E\uDDD9\u200D️\uD83E\uDDD9\u200D️",
+  "description": "This is magic 🧙‍️🧙‍️",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -45,6 +45,7 @@
     "@types/node": "18.13.0",
     "@typescript-eslint/eslint-plugin": "5.52.0",
     "@typescript-eslint/parser": "5.52.0",
+    "bundlemon": "^2.0.1",
     "eslint": "8.34.0",
     "eslint-config-prettier": "8.6.0",
     "eslint-plugin-import": "2.27.5",
@@ -84,6 +85,17 @@
     ],
     "branches": [
       "main"
+    ]
+  },
+  "bundlemon": {
+    "baseDir": "./dist",
+    "reportOutput": [
+      "github"
+    ],
+    "files": [
+      {
+        "path": "index.js"
+      }
     ]
   }
 }
