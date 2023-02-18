@@ -32,6 +32,6 @@ You should enable [husky](https://github.com/typicode/husky) which be configured
 
 ## Release
 
-`idle-task` will be published NPM if your branch merge into main by using [semantic-release](https://github.com/semantic-release/semantic-release) .
+`fetch-magic` will be published NPM if your branch merge into main by using [semantic-release](https://github.com/semantic-release/semantic-release) .
 
 It also will create CHANGELOG automatically based on the commit messages.
