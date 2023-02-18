@@ -1,8 +1,19 @@
 {
   "name": "fetch-magic",
   "version": "1.1.1",
-  "description": "This is magic \uD83E\uDDD9\u200D️\uD83E\uDDD9\u200D️",
-  "main": "dist/index.js",
+  "description": "This is magic 🧙‍️🧙‍️",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.es.js",
+  "exports": {
+    "development": {
+      "require": "./dist/index.cjs.development.js",
+      "default": "./dist/index.es.development.js"
+    },
+    "production": {
+      "require": "./dist/index.cjs.js",
+      "default": "./dist/index.es.js"
+    }
+  },
   "types": "dist/index.d.ts",
   "files": [
     "dist"
@@ -13,6 +24,7 @@
     "test:browser": "jest --env=jsdom",
     "test:lint": "eslint src/",
     "test:prettier": "prettier src/",
+    "prebuild": "rm -rf dist/",
     "build": "rollup -c",
     "prepare": "husky install"
   },
@@ -45,6 +57,7 @@
     "@types/node": "18.13.0",
     "@typescript-eslint/eslint-plugin": "5.52.0",
     "@typescript-eslint/parser": "5.52.0",
+    "bundlemon": "^2.0.1",
     "eslint": "8.34.0",
     "eslint-config-prettier": "8.6.0",
     "eslint-plugin-import": "2.27.5",
@@ -73,9 +86,6 @@
     "cross-fetch": "^3.1.5",
     "urlcat": "^2.0.4"
   },
-  "engines": {
-    "node": "16.x"
-  },
   "release": {
     "plugins": [
       "@semantic-release/commit-analyzer",
@@ -87,6 +97,23 @@
     ],
     "branches": [
       "main"
+    ]
+  },
+  "bundlemon": {
+    "baseDir": "./dist",
+    "reportOutput": [
+      "github"
+    ],
+    "files": [
+      {
+        "path": "index.cjs.js"
+      },
+      {
+        "path": "index.umd.js"
+      },
+      {
+        "path": "index.es.js"
+      }
     ]
   }
 }

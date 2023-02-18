@@ -12,7 +12,7 @@
     "lib": [
       "ESNext",
       "DOM"
-    ],
+    ]
   },
   "include": ["src/**/*"],
   "exclude": [
