@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/hiroki0525/fetch-magic/compare/v1.1.1...v2.0.0) (2023-02-18)
+
+
+### Features
+
+* support ESM, CJS and UMD ([41cb518](https://github.com/hiroki0525/fetch-magic/commit/41cb5180f3f8c2ee9ed045495b336af3ee00b6c2))
+
+
+### BREAKING CHANGES
+
+* `fetch-magic` not only support UMD but also ESM and CJS for your module type
+
 ## [1.1.1](https://github.com/hiroki0525/fetch-magic/compare/v1.1.0...v1.1.1) (2022-11-13)
 
 
