@@ -54,7 +54,9 @@ yarn add fetch-magic
 
 You can also use CDN.
 
+```html
 <script crossorigin src="https://unpkg.com/fetch-magic/dist/index.umd.js"></script>
+```
 
 ## Usage
 
