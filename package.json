@@ -2,7 +2,18 @@
   "name": "fetch-magic",
   "version": "1.1.1",
   "description": "This is magic 🧙‍️🧙‍️",
-  "main": "dist/index.js",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.es.js",
+  "exports": {
+    "development": {
+      "require": "./dist/index.cjs.development.js",
+      "default": "./dist/index.es.development.js"
+    },
+    "production": {
+      "require": "./dist/index.cjs.js",
+      "default": "./dist/index.es.js"
+    }
+  },
   "types": "dist/index.d.ts",
   "files": [
     "dist"
@@ -13,6 +24,7 @@
     "test:browser": "jest --env=jsdom",
     "test:lint": "eslint src/",
     "test:prettier": "prettier src/",
+    "prebuild": "rm -rf dist/",
     "build": "rollup -c",
     "prepare": "husky install"
   },
@@ -94,7 +106,13 @@
     ],
     "files": [
       {
-        "path": "index.js"
+        "path": "index.cjs.js"
+      },
+      {
+        "path": "index.umd.js"
+      },
+      {
+        "path": "index.es.js"
       }
     ]
   }
