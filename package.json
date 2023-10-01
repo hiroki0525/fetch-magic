@@ -51,7 +51,7 @@
     "@semantic-release/github": "8.0.7",
     "@semantic-release/npm": "9.0.2",
     "@semantic-release/release-notes-generator": "10.0.3",
-    "@size-limit/preset-small-lib": "8.2.4",
+    "@size-limit/preset-small-lib": "9.0.0",
     "@size-limit/time": "8.2.4",
     "@types/jest": "29.4.0",
     "@types/node": "18.13.0",
